@@ -1,0 +1,10 @@
+<?php
+
+class PostInputDTO{
+    function __construct(
+        public $author,
+        public $body,
+        public $created_date,
+        public $videoUrl
+    ){}
+}

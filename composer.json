@@ -1,0 +1,23 @@
+{
+    "name": "api/php",
+    "description": "A php api using SOLID",
+    "type": "api",
+    "require": {
+        "doctrine/migrations": "^3.5",
+        "robmorgan/phinx": "^0.12.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "Api\\PhpUsingTdd\\": "src/"
+        }
+    },
+    "scripts": {
+        "tests": "vendor/bin/phpunit"
+    },
+    "authors": [
+        {
+            "name": "Erik",
+            "email": "erkmgwr@gmail.com"
+        }
+    ]
+}
