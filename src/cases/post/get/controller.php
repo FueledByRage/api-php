@@ -1,7 +1,7 @@
 <?php
-require_once './src/cases/user/get/get.php';
-require_once './src/entities/user.php';
-require_once './src/utils/checkKeys.php';
+require_once '../src/cases/user/get/get.php';
+require_once '../src/entities/user.php';
+require_once '../src/utils/checkKeys.php';
 
 class GetPostsController{
 

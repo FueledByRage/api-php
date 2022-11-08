@@ -1,7 +1,7 @@
 <?php
-require_once './src/repositories/IUserRepository.php';
-require_once './src/entities/user.php';
-require_once './src/DTOs/userDTO.php';
+require_once '../src/repositories/IUserRepository.php';
+require_once '../src/entities/user.php';
+require_once '../src/DTOs/userDTO.php';
 
 class CreateUser{
 

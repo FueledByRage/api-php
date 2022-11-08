@@ -1,5 +1,5 @@
 <?php
-require_once './src/DTOs/postDTO.php';
+require_once '../src/DTOs/postDTO.php';
 
 class Post{
     private string $author;

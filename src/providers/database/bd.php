@@ -3,10 +3,12 @@
 class DatabaseProvider{
 
     function getConnection(){
-        try{
+        try{            
             return new PDO('mysql:host=localhost;dbname=PHPCLIPS', 'root', 'clipsproject');
         }catch(Exception $e){
-            return null;
+            http_response_code(500);
+            echo json_encode(['error' => 'An internal error has occurried']);
+            die();
         }
     }
 }

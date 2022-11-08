@@ -1,6 +1,6 @@
 <?php
-require_once './src/repositories/IUserRepository.php';
-require_once './src/entities/user.php';
+require_once '../src/repositories/IUserRepository.php';
+require_once '../src/entities/user.php';
 
 class GetUser{
 

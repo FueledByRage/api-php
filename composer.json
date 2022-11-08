@@ -4,7 +4,8 @@
     "type": "api",
     "require": {
         "doctrine/migrations": "^3.5",
-        "robmorgan/phinx": "^0.12.13"
+        "robmorgan/phinx": "^0.12.13",
+        "php-amqplib/php-amqplib": "^2.8"
     },
     "autoload": {
         "psr-4": {

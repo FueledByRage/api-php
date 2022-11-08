@@ -1,13 +1,13 @@
 <?php
-require './src/providers/jwt/jwt.php';
-require './src/cases/user/create/index.php';
-require './src/cases/user/login/index.php';
-require './src/cases/user/get/index.php';
-require './src/cases/post/create/index.php';
-require './src/cases/post/get/index.php';
-require './src/cases/post/delete/index.php';
-require './src/routes/urlHandler.php';
-require './src/routes/router.php';
+require '../src/providers/jwt/jwt.php';
+require '../src/cases/user/create/index.php';
+require '../src/cases/user/login/index.php';
+require '../src/cases/user/get/index.php';
+require '../src/cases/post/create/index.php';
+require '../src/cases/post/get/index.php';
+require '../src/cases/post/delete/index.php';
+require '../src/routes/urlHandler.php';
+require '../src/routes/router.php';
 
 
 $router = new Router(new URLHandler);

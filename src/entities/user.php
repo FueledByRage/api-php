@@ -1,5 +1,5 @@
 <?php
-require_once './src/DTOs/userDTO.php';
+require_once '../src/DTOs/userDTO.php';
 
 
 class User{

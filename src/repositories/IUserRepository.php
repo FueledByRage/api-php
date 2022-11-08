@@ -1,5 +1,5 @@
 <?php
-    require_once './src/entities/user.php';
+    require_once '../src/entities/user.php';
 
 interface iUser{
     public function save(User $user);

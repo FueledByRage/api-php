@@ -1,5 +1,5 @@
 <?php
-require './src/routes/routes.php';
+require '../src/routes/routes.php';
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, PATCH, OPTIONS');
@@ -11,7 +11,8 @@ $URI = $_SERVER['REQUEST_URI'];
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 
 
-$explodedURI = explode('/', $URI);
+$explodedURI = array_slice(explode('/', $URI), 2);
+
 
 try{
     $router->routeHandler($explodedURI, $httpMethod);

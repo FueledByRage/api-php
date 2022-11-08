@@ -1,7 +1,7 @@
 <?php
-require_once './src/repositories/IPostRepository.php';
-require_once './src/repositories/IUserRepository.php';
-require_once './src/entities/post.php';
+require_once '../src/repositories/IPostRepository.php';
+require_once '../src/repositories/IUserRepository.php';
+require_once '../src/entities/post.php';
 
 class CreatePost{
 

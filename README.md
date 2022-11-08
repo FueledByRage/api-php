@@ -1,5 +1,25 @@
 # How to use:
 
+Use it on wammp in order to access throught localhost
+
+Intall it's depedencies with composer
+
+```
+    composer install
+```
+
+Execute it's migration 
+
+```
+    .\vendor\bin\phinx migrate
+```
+
+You can also create container to it's services (MySQL, adminer and RabbitMQ) using docker-compose
+
+```
+    docker-compose up
+```
+
 # About: 
 It's an API built in vanilla PHP trying to apply some SOLID concepts. Its purpose is to increase my skills on a new language as apply server concepts without frameworks.
 
@@ -9,8 +29,7 @@ I decided to learn a new language as apply SOLID which i was already studying an
 
 # Routes
 
-The base url is http://localhost:8000/api/
-
+Base url: http://localhost/public_html/api
 ## user
 
 ENDPOINT | METHOD | PARAMS | EXPECTED SUCCESS | EXPECTED ERROR

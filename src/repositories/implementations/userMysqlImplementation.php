@@ -1,6 +1,6 @@
 <?php
-require_once './src/repositories/IUserRepository.php';
-require_once './src/entities/user.php';
+require_once '../src/repositories/IUserRepository.php';
+require_once '../src/entities/user.php';
 
 
 class UserMYSQL implements iUser{
@@ -24,6 +24,7 @@ class UserMYSQL implements iUser{
         return $query->execute();
     }
     function get(string $username){
+        if(!$this->connection) return throw new Exception('Error connecting to database');
         $sql = 'SELECT * FROM Users WHERE username = :username';
         $data = $this->connection->prepare($sql);
         $data->bindValue(":username", $username);
@@ -32,6 +33,7 @@ class UserMYSQL implements iUser{
         return $data->fetch();
     }
     function getByEmail(string $email){
+        if(!$this->connection) return throw new Exception('Error connecting to database');
         $sql = 'SELECT * FROM Users WHERE email = :email';
         $data = $this->connection->prepare($sql);
         $data->bindValue(":email", $email);

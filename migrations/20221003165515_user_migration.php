@@ -18,11 +18,12 @@ final class UserMigration extends AbstractMigration
      */
     public function change(): void{
         $table = $this->table('User');
-        $table->addColumn('username', 'string', ['limit' => 10, 'unique' => true])
-        ->addColumn('email', 'string', ['limit' => 20, 'unique' => true])
+        $table->addColumn('username', 'string', ['limit' => 10])
+        ->addColumn('email', 'string', ['limit' => 20])
         ->addColumn('pass', 'string', ['limit' => 15])
         ->addColumn('about', 'string', ['limit' => 200])
         ->addColumn('profileUrl', 'string')
+        ->addIndex(['username', 'email'], ['unique' => true ])
         ->create();
     }
 }

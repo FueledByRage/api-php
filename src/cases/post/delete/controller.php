@@ -1,8 +1,8 @@
 <?php
-require_once './src/providers/jwt/jwt.php';
-require_once './src/cases/post/delete/delete.php';
-require_once './src/entities/post.php';
-require_once './src/utils/checkKeys.php';
+require_once '../src/providers/jwt/jwt.php';
+require_once '../src/cases/post/delete/delete.php';
+require_once '../src/entities/post.php';
+require_once '../src/utils/checkKeys.php';
 
 class DeleteController{
 

@@ -1,7 +1,7 @@
 <?php
 
 
-require_once './src/entities/post.php';
+require_once '../src/entities/post.php';
 
 
 interface IPost{

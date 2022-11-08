@@ -1,9 +1,9 @@
 <?php
-require_once './src/cases/user/create/create.php';
-require_once './src/entities/user.php';
-require_once './src/utils/checkKeys.php';
-require_once './src/providers/jwt/jwt.php';
-require_once './src/DTOs/userDTO.php';
+require_once '../src/cases/user/create/create.php';
+require_once '../src/entities/user.php';
+require_once '../src/utils/checkKeys.php';
+require_once '../src/providers/jwt/jwt.php';
+require_once '../src/DTOs/userDTO.php';
 
 class Controller{
 

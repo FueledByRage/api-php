@@ -1,10 +1,10 @@
 <?php
-require_once './src/http/request.php';
-require_once './src/http/response.php';
-require_once './src/entities/user.php';
-require_once './src/repositories/implementations/userMysqlImplementation.php';
-require_once './src/repositories/implementations/postMysqlImplementation.php';
-require_once './src/routes/urlHandler.php';
+require_once '../src/http/request.php';
+require_once '../src/http/response.php';
+require_once '../src/entities/user.php';
+require_once '../src/repositories/implementations/userMysqlImplementation.php';
+require_once '../src/repositories/implementations/postMysqlImplementation.php';
+require_once '../src/routes/urlHandler.php';
 
 class Router{
     public $routes = [];
@@ -44,7 +44,7 @@ class Router{
             }
         }else{
             http_response_code(400);
-            echo json_encode(['error' => 'Router not found']);
+            echo json_encode(['error' => 'Route not found']);
         }
     }
 }

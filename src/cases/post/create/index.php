@@ -1,11 +1,11 @@
 <?php
-require_once './src/cases/post/create/controller.php';
-require_once './src/cases/post/create/create.php';
-require_once './src/repositories/implementations/postMysqlImplementation.php';
-require_once './src/providers/database/bd.php';
-require_once './src/utils/checkKeys.php';
-require_once './src/repositories/implementations/userMysqlImplementation.php';
-require_once './src/providers/jwt/jwt.php';
+require_once '../src/cases/post/create/controller.php';
+require_once '../src/cases/post/create/create.php';
+require_once '../src/repositories/implementations/postMysqlImplementation.php';
+require_once '../src/providers/database/bd.php';
+require_once '../src/utils/checkKeys.php';
+require_once '../src/repositories/implementations/userMysqlImplementation.php';
+require_once '../src/providers/jwt/jwt.php';
 
 
 $database = new DatabaseProvider();
