@@ -40,9 +40,7 @@ class Request{
     }
 
     function getFile(string $fileName){
-        $file = $_FILES[$fileName];
-
-        if($file) return $file;
+        if(array_key_exists($fileName, $_FILES)) return $_FILES[$fileName];
         return null;
     }
 }

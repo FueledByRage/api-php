@@ -10,6 +10,6 @@ require_once '../src/providers/jwt/jwt.php';
 $database = new DatabaseProvider();
 $jwt = new JWT();
 $checkKeys = new CheckKeys();
-$userImplementation = new UserMysql(null);
+$userImplementation = new UserMysql($database->getConnection());
 $create = new CreateUser($userImplementation);
 $createUserController = new Controller($create, $checkKeys, $jwt);
