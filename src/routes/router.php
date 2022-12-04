@@ -30,12 +30,10 @@ class Router{
             try{
                 $req = new Request;
                 $res = new Response;
-
                 $explodedURL = $this->urlHandler->removeBlank($explodedURL);
                 $explodedURL = $this->urlHandler->removeApi($explodedURL);
                 $url = $this->urlHandler->getRoute($explodedURL);
-
-                !array_key_exists($url, $this->routes[$method]) ? throw new Exception("Route not found", 404) : 
+                !array_key_exists($url, $this->routes[$method]) ? throw new Exception($url, 404) : 
 
                 $this->routes[strtoupper($method)][$url]->execute($req, $res);
             }catch(Exception $e){

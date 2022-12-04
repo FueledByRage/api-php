@@ -23,7 +23,7 @@ class UserMYSQL implements iUser{
 
         return $query->execute();
     }
-    function get(string $username){
+    function get(string $username) {
         if(!$this->connection) return throw new Exception('Error connecting to database');
         $sql = 'SELECT * FROM User WHERE username = :username';
         $data = $this->connection->prepare($sql);
@@ -32,7 +32,7 @@ class UserMYSQL implements iUser{
         //if($data->rowCount() == 0) throw new Exception('Error getting user');
         return $data->fetch();
     }
-    function getByEmail(string $email){
+    function getByEmail(string $email) {
         if(!$this->connection) return throw new Exception('Error connecting to database');
         $sql = 'SELECT * FROM User WHERE email = :email';
         $data = $this->connection->prepare($sql);

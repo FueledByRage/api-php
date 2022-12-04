@@ -10,6 +10,7 @@ class GetUser{
     function get(String $username){
         $user = $this->userImplementation->get($username);
         if($user == null) throw new Exception('User not registered', 401);
+        $user['pass'] = '';
         return $user;
     }
 }

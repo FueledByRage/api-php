@@ -12,13 +12,10 @@ class CreatePost{
     
     function save(Post $post){
         
-        $user = $this->userImplementation->get($post->author);
+        $user = $this->userImplementation->get($post->getAuthor());
 
         if(!$user) throw new Exception('User not found', 404);
 
-        $saved = $this->postImplementation->save($post, $user['id']);
-        
-        if(!$saved) throw new Exception('Error saving post.', 500);
-        return $saved;
+        $this->postImplementation->save($post, $user['id']);
     }
 }

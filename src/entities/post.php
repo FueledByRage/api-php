@@ -3,12 +3,14 @@ require_once '../src/DTOs/postDTO.php';
 
 class Post{
     private string $author;
+    private string $title;
     private string $body;
     private string $created_date;
     private string $videoUrl;
 
     function __construct( PostInputDTO $postInputDTO ){
         $this->setAuthor($postInputDTO->author);
+        $this->setTitle($postInputDTO->title);
         $this->setBody($postInputDTO->body);
         $this->setCreated_date($postInputDTO->created_date);
         $this->setVideoUrl($postInputDTO->videoUrl);
@@ -91,6 +93,26 @@ class Post{
     public function setVideoUrl($videoUrl)
     {
         $this->videoUrl = $videoUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of title
+     */ 
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set the value of title
+     *
+     * @return  self
+     */ 
+    public function setTitle($title)
+    {
+        $this->title = $title;
 
         return $this;
     }

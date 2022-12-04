@@ -1,4 +1,5 @@
 <?php
+require_once '../vendor/autoload.php';
 require '../src/routes/routes.php';
 
 header('Access-Control-Allow-Origin: *');

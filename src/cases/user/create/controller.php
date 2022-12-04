@@ -1,9 +1,13 @@
 <?php
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Connection\AMQPSSLConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 require_once '../src/cases/user/create/create.php';
 require_once '../src/entities/user.php';
 require_once '../src/utils/checkKeys.php';
 require_once '../src/providers/jwt/jwt.php';
 require_once '../src/DTOs/userDTO.php';
+require_once '../src/dataStream/IDataStream.php';
 
 class Controller{
 
@@ -11,14 +15,17 @@ class Controller{
         public CreateUser $create,
         public CheckKeys $checkKeys,
         public JWT $jwt,
+        public IDataStream $dataStream
     ){}
 
     function execute($req, $res){
         try{
             $body = $req->body();
+            
             if(!$this->checkKeys->execute($body, ['username', 'email', 'password', 'about'])){
                 throw new Exception('Missing credentials', 406);
             }
+            //$this->dataStream->producer(['email' => $body['email'], 'message' => 'Hello world'], 'email_queue');
 
             //gotta save the profile url and create it's url
 
@@ -31,6 +38,7 @@ class Controller{
             $save = $this->create->save($userDTO);
             
             if(!$save) throw new Exception('Error saving user', 500);
+
 
             $token = $this->jwt->provider(['typ' => 'JWT', 'alg' => 'HS256'],['username' => $userDTO->username]);
             $res->send(['token' => $token, 'user' => $userDTO->username]);

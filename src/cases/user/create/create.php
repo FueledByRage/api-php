@@ -6,7 +6,7 @@ require_once '../src/DTOs/userDTO.php';
 class CreateUser{
 
     function __construct(
-        public iUser $userImplementation
+        public iUser $userImplementation,
     ){}
     function save(UserInputDTO $userDto){
         $checkUsername = $this->userImplementation->get($userDto->username);

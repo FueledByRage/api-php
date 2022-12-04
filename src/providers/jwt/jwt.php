@@ -21,7 +21,7 @@ class JWT{
             $header = $explodedJWT[0];
             $payload = $explodedJWT[1]; 
 
-            $sign = $this->getSign($header, $payload);
+            //$sign = $this->getSign($header, $payload);
     
             return  json_decode(base64_decode($payload));
         }catch(\throwable $exception){

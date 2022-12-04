@@ -3,6 +3,8 @@ require_once '../src/cases/post/create/create.php';
 require_once '../src/entities/post.php';
 require_once '../src/utils/checkKeys.php';
 require_once '../src/providers/jwt/jwt.php';
+require_once '../src/DTOs/postDTO.php';
+
 
 class CreatePostController{
 
@@ -18,20 +20,24 @@ class CreatePostController{
 
             $token = getallheaders()['token'];
 
-            if(!$this->checkKeys->execute($body, ['body']) || !$token) throw new Exception('Missing credentials', 406);    
+            if(!$this->checkKeys->execute($body, ['body', 'title']) || !$token) throw new Exception('Missing credentials', 406);    
 
             $user = $this->jwt->decript($token)->{'username'};
             
             $file = $req->getFile('file');
 
-            $videoUrl = $this->saveVideo($file);
+            $videoUrl = $this->saveVideo($file, $user);
+
+            $postDTO = new PostInputDTO($user, $body['title'], $body['body'], date('Y-m-d H:i:s'), $videoUrl);
+
+            $post = new Post($postDTO);
             
-            $post = new Post($user, $body['body'], date('Y-m-d H:i:s'), $videoUrl);
-            
-            if(!$this->create->save($post)) throw new Exception('Error saving post', 500);
+            $this->create->save($post);
+
+            //if(!$result) throw new Exception($result, 500);
             
             $res->status(201);
-            $res->send(['post' => $post]);
+            $res->send(['url' => $post->getVideoUrl()]);
         }catch(Exception $e){
             $res->status($e->getCode());
             $res->send(['message' => $e->getMessage()]);
@@ -39,15 +45,16 @@ class CreatePostController{
     
     }
 
-    private function saveVideo($file) : string {
+    private function saveVideo($file, $author) : string {
         if(!$file) throw new Exception('Vídeo not found.', 406);
 
-        $upload = move_uploaded_file($file['tmp_name'], realpath('./uploads/videos').'/'.$file['name']);
+        $newFileName = date('H:i:s').'-'.$author;
+
+        $upload = move_uploaded_file($file['tmp_name'], realpath('../public_html/uploads/videos').'/'.$file['name']);
 
         if(!$upload) throw new Exception('Error saving vídeo', 406);
 
-        $videoName = $file['name'];
-        $videoUrl = 'http://localhost:8000/uploads/videos/'.$videoName;
+        $videoUrl = 'http://localhost/clips/public_html/uploads/videos/'.$newFileName;
 
         return $videoUrl;
     }
