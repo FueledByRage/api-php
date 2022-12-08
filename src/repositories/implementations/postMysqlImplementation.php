@@ -1,6 +1,8 @@
 <?php
 require_once '../src/repositories/IPostRepository.php';
 require_once '../src/entities/post.php';
+require_once '../src/DTOs/postDTO.php';
+
 
 
 class PostMysql implements IPost{
@@ -9,7 +11,7 @@ class PostMysql implements IPost{
         private ?PDO $connection,
     ){}
 
-    function save(Post $post, $author_id){
+    function save(Post $post, int $author_id){
         if(!$this->connection) return throw new Exception('Error connecting to database');
         $sql = 'INSERT INTO Post (author_id, author, title,  body, createdAt, videoUrl) VALUES (:author_id, :author, :title, :body, :date, :videoUrl);';
         $query = $this->connection->prepare($sql);

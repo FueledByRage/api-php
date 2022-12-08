@@ -32,7 +32,7 @@ class CreatePostController{
 
             $post = new Post($postDTO);
             
-            $this->create->save($post);
+            $this->create->save($postDTO);
 
             //if(!$result) throw new Exception($result, 500);
             
@@ -48,9 +48,10 @@ class CreatePostController{
     private function saveVideo($file, $author) : string {
         if(!$file) throw new Exception('Vídeo not found.', 406);
 
-        $newFileName = date('H:i:s').'-'.$author;
+        $currentDate = str_replace(' ' , '', date('H:i:s'));
+        $newFileName = base64_encode($currentDate.'-'.$author).'.mp4';
 
-        $upload = move_uploaded_file($file['tmp_name'], realpath('../public_html/uploads/videos').'/'.$file['name']);
+        $upload = move_uploaded_file($file['tmp_name'], realpath('../public_html/uploads/videos').'/'.$newFileName);
 
         if(!$upload) throw new Exception('Error saving vídeo', 406);
 
